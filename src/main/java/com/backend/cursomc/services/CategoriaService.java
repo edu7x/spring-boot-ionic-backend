@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.backend.cursomc.domain.Categoria;
+import com.backend.cursomc.dto.CategoriaDTO;
 import com.backend.cursomc.repositories.CategoriaRepository;
 import com.backend.cursomc.services.exceptions.DataIntegrityException;
 import com.backend.cursomc.services.exceptions.ObjectNotFoundException;
@@ -53,6 +54,10 @@ public class CategoriaService {
 		} catch(DataIntegrityViolationException e) {
 			throw new DataIntegrityException("Não é possível excluir uma categoria que possui produtos.");
 		}
+	}
+	
+	public Categoria fromDTO(CategoriaDTO objDTO) {
+		return new Categoria(objDTO.getId(), objDTO.getNome());
 	}
 	
 }
