@@ -1,5 +1,7 @@
 package com.backend.cursomc.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,10 @@ public class CategoriaService {
 
 	@Autowired
 	private CategoriaRepository repo;
+	
+	public List<Categoria> findAll() {
+		return repo.findAll();
+	}
 	
 	public Categoria find(Integer id) {
 		return repo.findById(id)
